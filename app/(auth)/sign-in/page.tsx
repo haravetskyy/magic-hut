@@ -18,43 +18,20 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
+import { signInSchema, SignInValues } from '@/lib/auth.model';
 import { zodResolver } from '@hookform/resolvers/zod';
 import Link from 'next/link';
 import { useForm } from 'react-hook-form';
-import { z } from 'zod';
-
-const formSchema = z.object({
-  email: z
-    .string()
-    .email()
-    .max(320, { message: 'Email has to be shorter than 320 letters.' }),
-  password: z
-    .string()
-    .min(12, { message: 'Password must be at least 12 characters long.' })
-    .max(120, { message: 'Password has to be shorter than 120 symbols' })
-    .refine((password) => /[A-Z]/.test(password), {
-      message: 'Password must contain at least one uppercase letter.',
-    })
-    .refine((password) => /[a-z]/.test(password), {
-      message: 'Password must contain at least one lowercase letter.',
-    })
-    .refine((password) => /[0-9]/.test(password), {
-      message: 'Password must contain at least one number.',
-    })
-    .refine((password) => /[^A-Za-z0-9]/.test(password), {
-      message: 'Password must contain at least one special character.',
-    }),
-});
 
 const SignIn = () => {
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
+  const form = useForm<SignInValues>({
+    resolver: zodResolver(signInSchema),
     defaultValues: {
       email: '',
       password: '',
     },
   });
-  function onSubmit(values: z.infer<typeof formSchema>) {
+  function onSubmit(values: SignInValues) {
     console.log(values);
   }
   return (
