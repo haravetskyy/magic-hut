@@ -31,9 +31,9 @@ const SignIn = () => {
       password: '',
     },
   });
-  function onSubmit(values: SignInValues) {
+  const onSubmit = (values: SignInValues) => {
     console.log(values);
-  }
+  };
   return (
     <Card className="w-full max-w-md mx-auto border-0 shadow-none">
       <CardHeader>

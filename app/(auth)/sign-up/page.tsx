@@ -18,11 +18,11 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
+import { authClient } from '@/lib/auth-client';
 import { signUpSchema, SignUpValues } from '@/lib/auth.model';
 import { zodResolver } from '@hookform/resolvers/zod';
 import Link from 'next/link';
 import { useForm } from 'react-hook-form';
-import { z } from 'zod';
 
 const SignUp = () => {
   const form = useForm<SignUpValues>({
@@ -34,9 +34,18 @@ const SignUp = () => {
       lastName: '',
     },
   });
-  function onSubmit(values: SignUpValues) {
+
+  const onSubmit = async (values: SignUpValues) => {
+    const { email, password, firstName, lastName } = values;
+    const { data, error } = await authClient.signUp.email({
+      email,
+      password,
+      name: `${firstName} ${lastName}`,
+      callbackURL: '/sign-in',
+    });
     console.log(values);
-  }
+  };
+
   return (
     <Card className="w-full max-w-md mx-auto border-0">
       <CardHeader>
