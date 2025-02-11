@@ -12,8 +12,6 @@ Ensure you have the following installed:
 
 ## **Getting Started**
 
----
-
 ### **1. Clone the Repository**
 
 ```bash

@@ -18,6 +18,8 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
+import { toast } from '@/hooks/use-toast';
+import { authClient } from '@/lib/auth-client';
 import { signInSchema, SignInValues } from '@/lib/auth.model';
 import { zodResolver } from '@hookform/resolvers/zod';
 import Link from 'next/link';
@@ -31,9 +33,37 @@ const SignIn = () => {
       password: '',
     },
   });
-  const onSubmit = (values: SignInValues) => {
-    console.log(values);
+
+  const onSubmit = async (values: SignInValues) => {
+    const { email, password } = values;
+    const { data, error } = await authClient.signIn.email(
+      {
+        email,
+        password,
+        callbackURL: '/dashboard',
+      },
+      {
+        onRequest: () => {
+          toast({
+            title: 'Please, wait...',
+          });
+        },
+        onSuccess: () => {
+          toast({
+            title: 'Success!',
+          });
+          form.reset();
+        },
+        onError: (ctx) => {
+          toast({
+            title: ctx.error.message,
+            variant: 'destructive',
+          });
+        },
+      },
+    );
   };
+
   return (
     <Card className="w-full max-w-md mx-auto border-0 shadow-none">
       <CardHeader>

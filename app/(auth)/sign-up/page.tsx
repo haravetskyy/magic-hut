@@ -18,6 +18,7 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
+import { toast } from '@/hooks/use-toast';
 import { authClient } from '@/lib/auth-client';
 import { signUpSchema, SignUpValues } from '@/lib/auth.model';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -37,17 +38,37 @@ const SignUp = () => {
 
   const onSubmit = async (values: SignUpValues) => {
     const { email, password, firstName, lastName } = values;
-    const { data, error } = await authClient.signUp.email({
-      email,
-      password,
-      name: `${firstName} ${lastName}`,
-      callbackURL: '/sign-in',
-    });
-    console.log(values);
+    const { data, error } = await authClient.signUp.email(
+      {
+        email,
+        password,
+        name: `${firstName} ${lastName}`,
+        callbackURL: '/sign-in',
+      },
+      {
+        onRequest: () => {
+          toast({
+            title: 'Please, wait...',
+          });
+        },
+        onSuccess: () => {
+          toast({
+            title: 'Success!',
+          });
+          form.reset();
+        },
+        onError: (ctx) => {
+          toast({
+            title: ctx.error.message,
+            variant: 'destructive',
+          });
+        },
+      },
+    );
   };
 
   return (
-    <Card className="w-full max-w-md mx-auto border-0">
+    <Card className="w-full max-w-md mx-auto border-0 shadow-none">
       <CardHeader>
         <CardTitle className="text-2xl">Sign Up</CardTitle>
         <CardDescription className="text-md">
