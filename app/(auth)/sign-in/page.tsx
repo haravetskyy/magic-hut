@@ -56,7 +56,8 @@ const SignIn = () => {
         },
         onError: (ctx) => {
           toast({
-            title: ctx.error.message,
+            title: 'Something went wrong',
+            description: ctx.error.message,
             variant: 'destructive',
           });
         },

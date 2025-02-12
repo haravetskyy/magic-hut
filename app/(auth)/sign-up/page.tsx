@@ -54,6 +54,7 @@ const SignUp = () => {
         onSuccess: () => {
           toast({
             title: 'Success!',
+            description: 'Please check your email to verify your address.',
           });
           form.reset();
         },

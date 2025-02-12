@@ -2,13 +2,23 @@
 
 An authentication service for [Harbor Task](https://github.com/haravetskyy/harbor-task).
 
-### **Prerequisites**
+---
+
+Here are instructions on how to use the code from this project to implement authentication in your own project.
+
+## **Prerequisites**
 
 Ensure you have the following installed:
 
 - **Node.js** (v18 or later)
 - **pnpm**
 - **Docker** and **Docker Compose**
+
+Also ensure you have set up the following things:
+- **Arcjet** key
+- **better-auth** secret
+- **SendGrid** API key
+- **Email address** with *SMTP*
 
 ## **Getting Started**
 

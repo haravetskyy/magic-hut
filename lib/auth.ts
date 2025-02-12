@@ -21,7 +21,7 @@ export const auth = betterAuth({
       const verificationUrl = `${process.env.BETTER_AUTH_URL}/api/auth/verify-email?token=${token}&callbackURL=${process.env.EMAIL_VERIFICATION_CALLBACK_URL}`;
       await sendEmail({
         to: user.email,
-        subject: 'Magic Hut: Verify your email address',
+        subject: 'Verify your email address',
         text: `Click the link to verify your email: ${verificationUrl}`,
         html: `<p style="color:blue;text-align:center">Click the <a href="${verificationUrl}">link</a> to verify your email</p>`,
       });
