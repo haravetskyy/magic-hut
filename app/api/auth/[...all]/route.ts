@@ -25,7 +25,7 @@ const aj = arcjet({
 
         interval: '10m',
 
-        max: 5,
+        max: 500,
       },
     }),
   ],

@@ -14,7 +14,7 @@ const DashboardPage = async () => {
   const user = session?.user;
 
   return (
-    <div className="w-full h-full flex justify-center items-center">
+    <div className="w-full h-full flex justify-center items-center flex-col">
       <h2>You are in the system!</h2>
       <h3>Name: {user.name}</h3>
       <h3>Email: {user.email}</h3>
