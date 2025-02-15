@@ -115,11 +115,19 @@ const SignIn = () => {
           </form>
         </Form>
       </CardContent>
-      <CardFooter className="flex justify-center">
+      <CardFooter className="flex justify-center flex-col">
         <p className="text-sm text-muted-foreground">
           Don&apos;t have an account yet?{' '}
           <Link href="/sign-up" className="text-primary hover:underline">
             Sign up
+          </Link>
+        </p>
+        <p className="text-sm text-muted-foreground">
+          <Link
+            href="/forgot-password"
+            className="text-primary hover:underline"
+          >
+            Forgot password?
           </Link>
         </p>
       </CardFooter>

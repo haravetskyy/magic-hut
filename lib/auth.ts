@@ -1,8 +1,8 @@
+import sendEmail from '@/actions/email';
 import { betterAuth } from 'better-auth';
 import { prismaAdapter } from 'better-auth/adapters/prisma';
-import prisma from './prisma';
-import sendEmail from '@/actions/email';
 import { openAPI } from 'better-auth/plugins';
+import prisma from './prisma';
 
 export const auth = betterAuth({
   database: prismaAdapter(prisma, {
@@ -12,6 +12,14 @@ export const auth = betterAuth({
     enabled: true,
     autoSignIn: true,
     requireEmailVerification: true,
+    sendResetPassword: async ({ user, url }) => {
+      await sendEmail({
+        to: user.email,
+        subject: 'Reset your password',
+        text: `Click the link to reset your password: ${url}`,
+        html: `<p style="color:blue;text-align:center">Click the <a href="${url}">link</a> to reset your password</p>`,
+      });
+    },
   },
   plugins: [openAPI()],
   emailVerification: {
