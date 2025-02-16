@@ -21,6 +21,7 @@
     "@radix-ui/react-toast": "^1.2.6",
     "@sendgrid/mail": "^8.1.4",
     "@tabler/core": "^1.0.0",
+    "@tabler/icons-react": "^3.30.0",
     "better-auth": "^1.1.16",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",

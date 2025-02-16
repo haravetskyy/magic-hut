@@ -24,6 +24,7 @@ import { signInSchema, SignInValues } from '@/lib/auth.model';
 import { zodResolver } from '@hookform/resolvers/zod';
 import Link from 'next/link';
 import { useForm } from 'react-hook-form';
+import { IconBrandGithub } from '@tabler/icons-react';
 
 const SignIn = () => {
   const form = useForm<SignInValues>({
@@ -34,7 +35,7 @@ const SignIn = () => {
     },
   });
 
-  const onSubmit = async (values: SignInValues) => {
+  const handleCredentialSignIn = async (values: SignInValues) => {
     const { email, password } = values;
     const { data, error } = await authClient.signIn.email(
       {
@@ -65,6 +66,13 @@ const SignIn = () => {
     );
   };
 
+  const handleSocialSignOn = async () => {
+    const data = await authClient.signIn.social({
+      provider: 'github',
+      callbackURL: '/dashboard',
+    });
+  };
+
   return (
     <Card className="w-full max-w-md mx-auto border-0 shadow-none">
       <CardHeader>
@@ -75,7 +83,10 @@ const SignIn = () => {
       </CardHeader>
       <CardContent>
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+          <form
+            onSubmit={form.handleSubmit(handleCredentialSignIn)}
+            className="space-y-4"
+          >
             <FormField
               control={form.control}
               name="email"
@@ -114,6 +125,12 @@ const SignIn = () => {
             </Button>
           </form>
         </Form>
+        <section className="flex flex-col items-center">
+          <p className="text-gray-500">or</p>
+          <Button className="font-bold w-full" onClick={handleSocialSignOn}>
+            <IconBrandGithub stroke={2} /> Sign in with GitHub
+          </Button>
+        </section>
       </CardContent>
       <CardFooter className="flex justify-center flex-col">
         <p className="text-sm text-muted-foreground">
