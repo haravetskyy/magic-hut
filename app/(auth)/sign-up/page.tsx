@@ -79,7 +79,7 @@ const SignUp = () => {
       <CardContent>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-            <section className="name flex flex-row gap-2">
+            <section className="name flex flex-row  justify-between">
               <FormField
                 control={form.control}
                 name="firstName"

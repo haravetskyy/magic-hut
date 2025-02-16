@@ -1,5 +1,6 @@
+import SignOut from '@/components/sign-out';
 import { auth } from '@/lib/auth';
-import { redirect } from 'next/dist/server/api-utils';
+import { redirect } from 'next/dist/client/components/redirect';
 import { headers } from 'next/headers';
 
 const DashboardPage = async () => {
@@ -8,16 +9,13 @@ const DashboardPage = async () => {
   });
 
   if (!session) {
-    return redirect('/');
+    return redirect('/sign-in');
   }
 
-  const user = session?.user;
-
   return (
-    <div className="w-full h-full flex justify-center items-center flex-col">
-      <h2>You are in the system!</h2>
-      <h3>Name: {user.name}</h3>
-      <h3>Email: {user.email}</h3>
+    <div className="w-full h-full flex gap-2 justify-center items-center flex-col">
+      <h1 className="font-bold text-2xl">Welcome!</h1>
+      <SignOut />
     </div>
   );
 };
