@@ -22,9 +22,9 @@ import { toast } from '@/hooks/use-toast';
 import { authClient } from '@/lib/auth-client';
 import { signInSchema, SignInValues } from '@/lib/auth.model';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { IconBrandGithub } from '@tabler/icons-react';
 import Link from 'next/link';
 import { useForm } from 'react-hook-form';
-import { IconBrandGithub } from '@tabler/icons-react';
 
 const SignIn = () => {
   const form = useForm<SignInValues>({
@@ -79,7 +79,7 @@ const SignIn = () => {
         <CardTitle className="text-2xl">Sign In</CardTitle>
         <CardDescription className="text-md">
           Welcome back! Please sign in to continue.
-        </CardDescription>
+      </CardDescription>
       </CardHeader>
       <CardContent>
         <Form {...form}>
