@@ -37,24 +37,34 @@ const ForgotPassword = () => {
   const onSubmit = async (values: ForgotPasswordValues) => {
     const { email } = values;
 
-    const { data, error } = await authClient.forgetPassword({
-      email,
-      redirectTo: '/reset-password',
-    });
-
-    if (error) {
-      toast({
-        title: 'Something went wrong',
-        description: error.message ?? 'Please, try again later',
-        variant: 'destructive',
-      });
-    } else {
-      toast({
-        title: 'Success',
-        description:
-          'If an account exists with this email, you will receive a password reset link.',
-      });
-    }
+    const { data, error } = await authClient.forgetPassword(
+      {
+        email,
+        redirectTo: '/reset-password',
+      },
+      {
+        onRequest: () => {
+          toast({
+            title: 'Please, wait...',
+          });
+        },
+        onSuccess: () => {
+          toast({
+            title: 'Success',
+            description:
+              'If an account exists with this email, you will receive a password reset link.',
+          });
+          form.reset();
+        },
+        onError: (ctx) => {
+          toast({
+            title: 'Something went wrong',
+            description: ctx.error.message ?? 'Please, try again later',
+            variant: 'destructive',
+          });
+        },
+      },
+    );
   };
 
   return (

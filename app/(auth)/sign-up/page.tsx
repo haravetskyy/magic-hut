@@ -60,7 +60,8 @@ const SignUp = () => {
         },
         onError: (ctx) => {
           toast({
-            title: ctx.error.message,
+            title: 'Something went wrong',
+            description: ctx.error.message ?? 'Please, try again later',
             variant: 'destructive',
           });
         },
@@ -79,12 +80,12 @@ const SignUp = () => {
       <CardContent>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-            <section className="name flex flex-row  justify-between">
+            <section className="name flex md:flex-row flex-col justify-between gap-2">
               <FormField
                 control={form.control}
                 name="firstName"
                 render={({ field }) => (
-                  <FormItem>
+                  <FormItem className="md:w-1/2">
                     <FormLabel>First name</FormLabel>
                     <FormControl>
                       <Input placeholder="John" {...field} />
@@ -97,7 +98,7 @@ const SignUp = () => {
                 control={form.control}
                 name="lastName"
                 render={({ field }) => (
-                  <FormItem>
+                  <FormItem className="md:w-1/2">
                     <FormLabel>Last name</FormLabel>
                     <FormControl>
                       <Input placeholder="Doe" {...field} />
