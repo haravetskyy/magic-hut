@@ -1,5 +1,7 @@
 'use client';
 
+import GithubButton from '@/components/github-button';
+import GoogleButton from '@/components/google-button';
 import { Button } from '@/components/ui/button';
 import {
   Card,
@@ -22,7 +24,6 @@ import { toast } from '@/hooks/use-toast';
 import { authClient } from '@/lib/auth-client';
 import { signInSchema, SignInValues } from '@/lib/auth.model';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { IconBrandGithub, IconBrandGoogleFilled } from '@tabler/icons-react';
 import Link from 'next/link';
 import { useForm } from 'react-hook-form';
 
@@ -64,20 +65,6 @@ const SignIn = () => {
         },
       },
     );
-  };
-
-  const handleGithubSignIn = async () => {
-    const data = await authClient.signIn.social({
-      provider: 'github',
-      callbackURL: '/dashboard',
-    });
-  };
-
-  const handleGoogleSignIn = async () => {
-    const data = await authClient.signIn.social({
-      provider: 'google',
-      callbackURL: '/dashboard',
-    });
   };
 
   return (
@@ -133,18 +120,14 @@ const SignIn = () => {
           </form>
         </Form>
         <section className="flex flex-col items-center gap-2">
-          <section className="flex flex-row gap-2 items-center justify-center w-full mt-2">
+          <div className="flex flex-row gap-2 items-center justify-center w-full mt-2">
             <hr className="w-full border-t border-t-gray-200" />
             <p className="text-gray-500">or</p>
             <hr className="w-full  border-t border-t-gray-200" />
-          </section>
+          </div>
 
-          <Button className="font-bold w-full" onClick={handleGithubSignIn}>
-            <IconBrandGithub stroke={2} /> Sign in with GitHub
-          </Button>
-          <Button className="font-bold w-full" onClick={handleGoogleSignIn}>
-            <IconBrandGoogleFilled stroke={2} /> Sign in with Google
-          </Button>
+          <GithubButton />
+          <GoogleButton />
         </section>
       </CardContent>
       <CardFooter className="flex justify-center flex-col">
