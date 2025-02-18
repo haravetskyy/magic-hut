@@ -12,6 +12,8 @@ const DashboardPage = async () => {
     return redirect('/sign-in');
   }
 
+  sessionStorage.removeItem('pendingEmail');
+
   return (
     <div className="w-full h-full flex gap-2 justify-center items-center flex-col">
       <h1 className="font-bold text-2xl">Welcome!</h1>

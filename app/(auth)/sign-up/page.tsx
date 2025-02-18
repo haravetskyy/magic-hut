@@ -23,6 +23,7 @@ import { authClient } from '@/lib/auth-client';
 import { signUpSchema, SignUpValues } from '@/lib/auth.model';
 import { zodResolver } from '@hookform/resolvers/zod';
 import Link from 'next/link';
+import { redirect } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 
 const SignUp = () => {
@@ -52,11 +53,10 @@ const SignUp = () => {
           });
         },
         onSuccess: () => {
-          toast({
-            title: 'Success!',
-            description: 'Please check your email to verify your address.',
-          });
           form.reset();
+          sessionStorage.setItem('pendingEmail', email);
+          
+          return redirect(`/verify-email`);
         },
         onError: (ctx) => {
           toast({
