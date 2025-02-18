@@ -10,11 +10,13 @@ import {
 } from '@/components/ui/card';
 import { authClient } from '@/lib/auth-client';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { useEffect } from 'react';
 
 const EmailVerified = () => {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const error = searchParams.get('error');
 
   useEffect(() => {
     const checkEmailVerification = async () => {
@@ -30,6 +32,23 @@ const EmailVerified = () => {
 
     checkEmailVerification();
   }, []);
+
+  if (error) {
+    return (
+      <Card className="w-full max-w-md mx-auto border-0 shadow-none">
+        <CardHeader>
+          <CardTitle className="text-3xl font-bold text-center text-gray-800">
+            Invalid Email Verification Link
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <CardDescription className="text-md text-center">
+            This email verification link is invalid or has expired.
+          </CardDescription>
+        </CardContent>
+      </Card>
+    );
+  }
 
   return (
     <Card className="w-full max-w-md mx-auto border-0 shadow-none">
