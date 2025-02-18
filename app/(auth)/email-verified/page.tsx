@@ -8,12 +8,28 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
+import { authClient } from '@/lib/auth-client';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
 
 const EmailVerified = () => {
-  const handleGoHome = () => {
-    sessionStorage.removeItem('pendingEmail');
-  };
+  const router = useRouter();
+
+  useEffect(() => {
+    const checkEmailVerification = async () => {
+      const { data: session } = await authClient.getSession({
+        query: { disableCookieCache: true },
+      });
+
+      if (!session?.user?.emailVerified) {
+        sessionStorage.removeItem('pendingEmail');
+        router.replace('/verify-email');
+      }
+    };
+
+    checkEmailVerification();
+  }, []);
 
   return (
     <Card className="w-full max-w-md mx-auto border-0 shadow-none">
@@ -25,10 +41,7 @@ const EmailVerified = () => {
         </CardDescription>
       </CardHeader>
       <CardContent className="flex justify-center items-center">
-        <Button
-          onClick={handleGoHome}
-          className="py-6 rounded-xl  font-bold w-1/2"
-        >
+        <Button className="py-6 rounded-xl  font-bold w-1/2">
           <Link href="/dashboard">Go home</Link>
         </Button>
       </CardContent>

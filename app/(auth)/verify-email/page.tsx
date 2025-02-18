@@ -18,12 +18,23 @@ const VerifyEmail = () => {
   const router = useRouter();
 
   useEffect(() => {
+    const checkVerificationStatus = async () => {
+      const { data: session } = await authClient.getSession({
+        query: { disableCookieCache: true },
+      });
+
+      if (session?.user?.emailVerified) {
+        router.replace('/dashboard');
+      }
+    };
+
     const storedEmail = sessionStorage.getItem('pendingEmail');
 
     if (!storedEmail) {
       router.replace('/sign-up');
     } else {
       setEmail(storedEmail);
+      checkVerificationStatus();
     }
   }, []);
 
