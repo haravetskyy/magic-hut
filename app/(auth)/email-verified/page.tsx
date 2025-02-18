@@ -1,4 +1,6 @@
-import { Button, buttonVariants } from '@/components/ui/button';
+'use client';
+
+import { Button } from '@/components/ui/button';
 import {
   Card,
   CardContent,
@@ -8,7 +10,11 @@ import {
 } from '@/components/ui/card';
 import Link from 'next/link';
 
-export default async function EmailVerifiedPage() {
+const EmailVerified = () => {
+  const handleGoHome = () => {
+    sessionStorage.removeItem('pendingEmail');
+  };
+
   return (
     <Card className="w-full max-w-md mx-auto border-0 shadow-none">
       <CardHeader>
@@ -19,10 +25,15 @@ export default async function EmailVerifiedPage() {
         </CardDescription>
       </CardHeader>
       <CardContent className="flex justify-center items-center">
-        <Button className="py-6 rounded-xl  font-bold w-1/2">
+        <Button
+          onClick={handleGoHome}
+          className="py-6 rounded-xl  font-bold w-1/2"
+        >
           <Link href="/dashboard">Go home</Link>
         </Button>
       </CardContent>
     </Card>
   );
-}
+};
+
+export default EmailVerified;

@@ -19,20 +19,14 @@ import {
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { toast } from '@/hooks/use-toast';
-import { auth } from '@/lib/auth';
 import { authClient } from '@/lib/auth-client';
 import { signUpSchema, SignUpValues } from '@/lib/auth.model';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { headers } from 'next/headers';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 
-const SignUp = async () => {
-  const session = await auth.api.getSession({
-    headers: await headers(),
-  });
-
+const SignUp = () => {
   const form = useForm<SignUpValues>({
     resolver: zodResolver(signUpSchema),
     defaultValues: {
