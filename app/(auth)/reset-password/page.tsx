@@ -34,8 +34,7 @@ const ResetPasswordContent = () => {
   const { toast } = useToast();
   const searchParams = useSearchParams();
   const error = searchParams.get('error');
-  const token =
-    new URLSearchParams(window.location.search).get('token') ?? undefined;
+  const token = searchParams.get('token') ?? undefined;
 
   const form = useForm<ResetPasswordValues>({
     resolver: zodResolver(resetPasswordSchema),
