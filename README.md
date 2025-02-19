@@ -15,10 +15,11 @@ Ensure you have the following installed:
 - **Docker** and **Docker Compose**
 
 Also ensure you have set up the following things:
+
 - **Arcjet** key
 - **better-auth** secret
 - **SendGrid** API key
-- **Email address** with *SMTP*
+- **Email address** with _SMTP_
 
 ## **Getting Started**
 

@@ -56,7 +56,7 @@ const SignIn = () => {
           });
           form.reset();
         },
-        onError: (ctx) => {
+        onError: ctx => {
           toast({
             title: 'Something went wrong',
             description: ctx.error.message,
@@ -77,10 +77,7 @@ const SignIn = () => {
       </CardHeader>
       <CardContent>
         <Form {...form}>
-          <form
-            onSubmit={form.handleSubmit(handleCredentialSignIn)}
-            className="space-y-4"
-          >
+          <form onSubmit={form.handleSubmit(handleCredentialSignIn)} className="space-y-4">
             <FormField
               control={form.control}
               name="email"
@@ -101,20 +98,13 @@ const SignIn = () => {
                 <FormItem>
                   <FormLabel>Password</FormLabel>
                   <FormControl>
-                    <Input
-                      type="password"
-                      placeholder="Enter your password"
-                      {...field}
-                    />
+                    <Input type="password" placeholder="Enter your password" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
             />
-            <Button
-              className="bg-green-900 hover:bg-green-900 font-bold w-full"
-              type="submit"
-            >
+            <Button className="bg-green-900 hover:bg-green-900 font-bold w-full" type="submit">
               Submit
             </Button>
           </form>
@@ -138,10 +128,7 @@ const SignIn = () => {
           </Link>
         </p>
         <p className="text-sm text-muted-foreground">
-          <Link
-            href="/forgot-password"
-            className="text-primary hover:underline"
-          >
+          <Link href="/forgot-password" className="text-primary hover:underline">
             Forgot password?
           </Link>
         </p>

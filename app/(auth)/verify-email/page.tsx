@@ -1,13 +1,7 @@
 'use client';
 
 import { Button } from '@/components/ui/button';
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { toast } from '@/hooks/use-toast';
 import { authClient } from '@/lib/auth-client';
 import { useRouter } from 'next/navigation';
@@ -57,7 +51,7 @@ const VerifyEmail = () => {
               title: 'Please, wait...',
             });
           },
-          onError: (ctx) => {
+          onError: ctx => {
             toast({
               title: 'Something went wrong',
               description: ctx.error.message ?? 'Please, try again later',
@@ -72,20 +66,14 @@ const VerifyEmail = () => {
   return (
     <Card className="w-full max-w-md mx-auto border-0 shadow-none">
       <CardHeader>
-        <CardTitle className="text-2xl text-center">
-          Please, verify your email
-        </CardTitle>
+        <CardTitle className="text-2xl text-center">Please, verify your email</CardTitle>
         <CardDescription className="text-md text-center">
-          We just sent an email to{' '}
-          <strong className="text-bold">{email}</strong>. Click the link in the
-          email to verify your account.
+          We just sent an email to <strong className="text-bold">{email}</strong>. Click the link in
+          the email to verify your account.
         </CardDescription>
       </CardHeader>
       <CardContent className="flex justify-center items-center">
-        <Button
-          onClick={handleResendEmail}
-          className="py-6 rounded-xl text-md font-bold w-1/2"
-        >
+        <Button onClick={handleResendEmail} className="py-6 rounded-xl text-md font-bold w-1/2">
           Resend email
         </Button>
       </CardContent>

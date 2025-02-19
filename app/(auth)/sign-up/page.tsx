@@ -58,7 +58,7 @@ const SignUp = () => {
 
           return redirect(`/verify-email`);
         },
-        onError: (ctx) => {
+        onError: ctx => {
           toast({
             title: 'Something went wrong',
             description: ctx.error.message ?? 'Please, try again later',
@@ -73,9 +73,7 @@ const SignUp = () => {
     <Card className="w-full max-w-md mx-auto border-0 shadow-none">
       <CardHeader>
         <CardTitle className="text-2xl">Sign Up</CardTitle>
-        <CardDescription className="text-md">
-          Create your account to get started.
-        </CardDescription>
+        <CardDescription className="text-md">Create your account to get started.</CardDescription>
       </CardHeader>
       <CardContent>
         <Form {...form}>
@@ -129,20 +127,13 @@ const SignUp = () => {
                 <FormItem>
                   <FormLabel>Password</FormLabel>
                   <FormControl>
-                    <Input
-                      type="password"
-                      placeholder="Enter your password"
-                      {...field}
-                    />
+                    <Input type="password" placeholder="Enter your password" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
             />
-            <Button
-              className="bg-blue-900 hover:bg-blue-900 font-bold w-full"
-              type="submit"
-            >
+            <Button className="bg-blue-900 hover:bg-blue-900 font-bold w-full" type="submit">
               Submit
             </Button>
           </form>

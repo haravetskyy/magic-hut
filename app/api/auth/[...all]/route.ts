@@ -51,17 +51,11 @@ const ajProtectedPost = async (req: NextRequest) => {
         message = 'Invalid email.';
       }
 
-      return NextResponse.json(
-        { message, reason: decision.reason },
-        { status: 400 },
-      );
+      return NextResponse.json({ message, reason: decision.reason }, { status: 400 });
     } else if (decision.reason.isRateLimit()) {
       message = 'You have reached rate limit, try again in 10 minutes.';
 
-      return NextResponse.json(
-        { message, reason: decision.reason },
-        { status: 400 },
-      );
+      return NextResponse.json({ message, reason: decision.reason }, { status: 400 });
     } else {
       return NextResponse.json({ message: 'Forbidden' }, { status: 403 });
     }

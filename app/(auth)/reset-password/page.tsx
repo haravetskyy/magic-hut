@@ -1,13 +1,7 @@
 'use client';
 
 import { Button } from '@/components/ui/button';
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import {
   Form,
   FormControl,
@@ -19,10 +13,7 @@ import {
 import { Input } from '@/components/ui/input';
 import { useToast } from '@/hooks/use-toast';
 import { authClient } from '@/lib/auth-client';
-import {
-  resetPasswordSchema,
-  ResetPasswordValues,
-} from '@/lib/reset-password.model';
+import { resetPasswordSchema, ResetPasswordValues } from '@/lib/reset-password.model';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { Suspense } from 'react';
@@ -98,11 +89,7 @@ const ResetPasswordContent = () => {
                 <FormItem>
                   <FormLabel>New Password</FormLabel>
                   <FormControl>
-                    <Input
-                      type="password"
-                      placeholder="Enter your new password"
-                      {...field}
-                    />
+                    <Input type="password" placeholder="Enter your new password" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>

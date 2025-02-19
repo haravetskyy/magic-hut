@@ -1,13 +1,7 @@
 'use client';
 
 import { Button } from '@/components/ui/button';
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { authClient } from '@/lib/auth-client';
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
@@ -55,8 +49,8 @@ const EmailVerified = () => {
       <CardHeader>
         <CardTitle className="text-2xl text-center">Email Verified!</CardTitle>
         <CardDescription className="text-md text-center">
-          Your email has been successfully verified. Click the button below to
-          finish account creation.
+          Your email has been successfully verified. Click the button below to finish account
+          creation.
         </CardDescription>
       </CardHeader>
       <CardContent className="flex justify-center items-center">

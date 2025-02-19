@@ -1,13 +1,7 @@
 'use client';
 
 import { Button } from '@/components/ui/button';
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import {
   Form,
   FormControl,
@@ -19,10 +13,7 @@ import {
 import { Input } from '@/components/ui/input';
 import { toast } from '@/hooks/use-toast';
 import { authClient } from '@/lib/auth-client';
-import {
-  forgotPasswordSchema,
-  ForgotPasswordValues,
-} from '@/lib/reset-password.model';
+import { forgotPasswordSchema, ForgotPasswordValues } from '@/lib/reset-password.model';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 
@@ -56,7 +47,7 @@ const ForgotPassword = () => {
           });
           form.reset();
         },
-        onError: (ctx) => {
+        onError: ctx => {
           toast({
             title: 'Something went wrong',
             description: ctx.error.message ?? 'Please, try again later',
@@ -72,8 +63,8 @@ const ForgotPassword = () => {
       <CardHeader>
         <CardTitle className="text-2xl text-center">Forgot password?</CardTitle>
         <CardDescription className="text-md">
-          No problem! Please, enter your email address and we will send you a
-          link to restore your password
+          No problem! Please, enter your email address and we will send you a link to restore your
+          password
         </CardDescription>
       </CardHeader>
       <CardContent>
@@ -86,11 +77,7 @@ const ForgotPassword = () => {
                 <FormItem>
                   <FormLabel>Email</FormLabel>
                   <FormControl>
-                    <Input
-                      type="email"
-                      placeholder="example@mail.com"
-                      {...field}
-                    />
+                    <Input type="email" placeholder="example@mail.com" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
