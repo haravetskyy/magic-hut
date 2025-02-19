@@ -22,7 +22,7 @@ import {
 import { Input } from '@/components/ui/input';
 import { toast } from '@/hooks/use-toast';
 import { authClient } from '@/lib/auth-client';
-import { signInSchema, SignInValues } from '@/lib/auth.model';
+import { signInSchema, SignInValues } from '@/lib/models/auth.model';
 import { zodResolver } from '@hookform/resolvers/zod';
 import Link from 'next/link';
 import { useForm } from 'react-hook-form';

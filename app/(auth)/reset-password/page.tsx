@@ -13,7 +13,7 @@ import {
 import { Input } from '@/components/ui/input';
 import { useToast } from '@/hooks/use-toast';
 import { authClient } from '@/lib/auth-client';
-import { resetPasswordSchema, ResetPasswordValues } from '@/lib/reset-password.model';
+import { resetPasswordSchema, ResetPasswordValues } from '@/lib/models/password-recovery.model';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { Suspense } from 'react';

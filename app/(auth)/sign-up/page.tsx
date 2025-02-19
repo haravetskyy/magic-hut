@@ -20,7 +20,7 @@ import {
 import { Input } from '@/components/ui/input';
 import { toast } from '@/hooks/use-toast';
 import { authClient } from '@/lib/auth-client';
-import { signUpSchema, SignUpValues } from '@/lib/auth.model';
+import { signUpSchema, SignUpValues } from '@/lib/models/auth.model';
 import { zodResolver } from '@hookform/resolvers/zod';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
