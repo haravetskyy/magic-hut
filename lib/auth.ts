@@ -1,6 +1,7 @@
 import sendEmail from '@/actions/email';
 import { betterAuth } from 'better-auth';
 import { prismaAdapter } from 'better-auth/adapters/prisma';
+import { nextCookies } from 'better-auth/next-js';
 import { openAPI } from 'better-auth/plugins';
 import prisma from './prisma';
 
@@ -8,6 +9,9 @@ export const auth = betterAuth({
   database: prismaAdapter(prisma, {
     provider: 'postgresql',
   }),
+  advanced: {
+    cookiePrefix: 'magic-hut',
+  },
   emailAndPassword: {
     enabled: true,
     autoSignIn: true,
@@ -49,18 +53,18 @@ export const auth = betterAuth({
                     @media (prefers-color-scheme: dark) {
                       body {
                         background-color: #121212 !important;
-                        color: #ffffff !important; 
+                        color: #ffffff !important;
                       }
                       .container {
                         background: #1e1e1e !important;
-                        color: #ffffff !important; 
+                        color: #ffffff !important;
                       }
                       h1, p {
-                        color: #ffffff !important; 
+                        color: #ffffff !important;
                       }
                       .button {
                         background-color: #ffffff !important;
-                        color: #000000 !important; 
+                        color: #000000 !important;
                         border: 2px solid #ffffff !important;
                       }
                     }
@@ -112,7 +116,7 @@ export const auth = betterAuth({
       });
     },
   },
-  plugins: [openAPI()],
+  plugins: [openAPI(), nextCookies()],
   emailVerification: {
     sendOnSignUp: true,
     autoSignInAfterVerification: true,
@@ -154,18 +158,18 @@ export const auth = betterAuth({
                     @media (prefers-color-scheme: dark) {
                       body {
                         background-color: #121212 !important;
-                        color: #ffffff !important; 
+                        color: #ffffff !important;
                       }
                       .container {
                         background: #1e1e1e !important;
-                        color: #ffffff !important; 
+                        color: #ffffff !important;
                       }
                       h1, p {
-                        color: #ffffff !important; 
+                        color: #ffffff !important;
                       }
                       .button {
                         background-color: #ffffff !important;
-                        color: #000000 !important; 
+                        color: #000000 !important;
                         border: 2px solid #ffffff !important;
                       }
                     }

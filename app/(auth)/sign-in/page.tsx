@@ -25,6 +25,7 @@ import { authClient } from '@/lib/auth-client';
 import { signInSchema, SignInValues } from '@/lib/models/auth.model';
 import { zodResolver } from '@hookform/resolvers/zod';
 import Link from 'next/link';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 
 const SignIn = () => {
@@ -36,13 +37,17 @@ const SignIn = () => {
     },
   });
 
+  const searchParams = useSearchParams();
+  const router = useRouter();
+
   const handleCredentialSignIn = async (values: SignInValues) => {
+    const redirectUrl = searchParams.get('redirectUrl') || window.location.origin;
+
     const { email, password } = values;
     const { data, error } = await authClient.signIn.email(
       {
         email,
         password,
-        callbackURL: '/dashboard',
       },
       {
         onRequest: () => {
@@ -55,6 +60,7 @@ const SignIn = () => {
             title: 'Success!',
           });
           form.reset();
+          router.push(redirectUrl);
         },
         onError: ctx => {
           toast({
