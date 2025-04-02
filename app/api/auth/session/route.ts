@@ -1,13 +1,16 @@
 'use server';
 
-import { authClient } from '@/lib/auth-client';
+import { auth } from '@/lib/auth';
+import { headers } from 'next/headers';
 import { NextRequest, NextResponse } from 'next/server';
 
 export async function GET(request: NextRequest) {
   try {
-    await authClient.getSession();
+    const session = await auth.api.getSession({ headers: await headers() });
 
-    return NextResponse.json({ status: 200 });
+    if (session !== null) return NextResponse.json({ session }, { status: 200 });
+
+    return NextResponse.json({ status: 500 });
   } catch (error) {
     console.error('Get session error: ', error);
 
