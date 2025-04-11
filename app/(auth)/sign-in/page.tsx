@@ -22,6 +22,7 @@ import {
 import { Input } from '@/components/ui/input';
 import { toast } from '@/hooks/use-toast';
 import { authClient } from '@/lib/auth-client';
+import { getRedirectUrl } from '@/lib/get-redirect-url';
 import { signInSchema, SignInValues } from '@/lib/models/auth.model';
 import { zodResolver } from '@hookform/resolvers/zod';
 import Link from 'next/link';
@@ -41,13 +42,15 @@ const SignIn = () => {
   const router = useRouter();
 
   const handleCredentialSignIn = async (values: SignInValues) => {
-    const redirectUrl = searchParams.get('redirectUrl') || window.location.origin;
+    const redirectUrl = getRedirectUrl();
 
     const { email, password } = values;
+
     const { data, error } = await authClient.signIn.email(
       {
         email,
         password,
+        callbackURL: redirectUrl,
       },
       {
         onRequest: () => {
@@ -60,12 +63,11 @@ const SignIn = () => {
             title: 'Success!',
           });
           form.reset();
-          router.push(redirectUrl);
         },
         onError: ctx => {
           toast({
             title: 'Something went wrong',
-            description: ctx.error.message,
+            description: ctx.error.message || 'Please, try again',
             variant: 'destructive',
           });
         },
