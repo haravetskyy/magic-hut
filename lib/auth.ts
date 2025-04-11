@@ -9,6 +9,7 @@ export const auth = betterAuth({
   database: prismaAdapter(prisma, {
     provider: 'postgresql',
   }),
+  trustedOrigins: [process.env.HARBOR_TASK_URL!],
   advanced: {
     cookiePrefix: 'magic-hut',
   },

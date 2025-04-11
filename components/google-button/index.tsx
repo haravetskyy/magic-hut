@@ -1,11 +1,14 @@
 import { authClient } from '@/lib/auth-client';
 import './google-button.css';
+import { getRedirectUrl } from '@/lib/get-redirect-url';
 
 const GoogleButton = () => {
+  const redirectUrl = getRedirectUrl();
+
   const handleGoogleSignIn = async () => {
     const data = await authClient.signIn.social({
       provider: 'google',
-      callbackURL: '/dashboard',
+      callbackURL: redirectUrl,
     });
   };
 

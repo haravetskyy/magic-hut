@@ -3,6 +3,7 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { authClient } from '@/lib/auth-client';
+import { getRedirectUrl } from '@/lib/get-redirect-url';
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useEffect } from 'react';
@@ -11,6 +12,8 @@ const EmailVerified = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const error = searchParams.get('error');
+
+  const redirectUrl = getRedirectUrl();
 
   useEffect(() => {
     const checkEmailVerification = async () => {
@@ -55,7 +58,7 @@ const EmailVerified = () => {
       </CardHeader>
       <CardContent className="flex justify-center items-center">
         <Button className="py-6 rounded-xl  font-bold w-1/2">
-          <Link href="/dashboard">Go home</Link>
+          <Link href={redirectUrl}>Go home</Link>
         </Button>
       </CardContent>
     </Card>
