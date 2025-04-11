@@ -1,3 +1,5 @@
+'use client';
+
 const getRedirectUrl = (): string => {
   const redirectCookie = document.cookie
     .split('; ')

@@ -1,9 +1,11 @@
+'use client';
+
 import { authClient } from '@/lib/auth-client';
 import { Button } from './ui/button';
-import { getRedirectUrl } from '@/lib/get-redirect-url';
+import useRedirectUrl from '@/hooks/use-redirect-url';
 
 const GithubButton = () => {
-  const redirectUrl = getRedirectUrl();
+  const redirectUrl = useRedirectUrl();
 
   const handleGithubSignIn = async () => {
     const data = await authClient.signIn.social({

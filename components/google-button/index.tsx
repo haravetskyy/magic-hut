@@ -1,9 +1,9 @@
 import { authClient } from '@/lib/auth-client';
 import './google-button.css';
-import { getRedirectUrl } from '@/lib/get-redirect-url';
+import useRedirectUrl from '@/hooks/use-redirect-url';
 
 const GoogleButton = () => {
-  const redirectUrl = getRedirectUrl();
+  const redirectUrl = useRedirectUrl();
 
   const handleGoogleSignIn = async () => {
     const data = await authClient.signIn.social({
