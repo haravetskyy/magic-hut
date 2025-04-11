@@ -1,16 +1,14 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { getRedirectUrl } from '@/lib/get-redirect-url';
 
-const useRedirectUrl = (defaultUrl: string = 'http://localhost:10000/'): string => {
+const useRedirectUrl = (defaultUrl: string = window.location.origin): string => {
   const [redirectUrl, setRedirectUrl] = useState<string>(defaultUrl);
 
   useEffect(() => {
-    const redirectCookie = document.cookie
-      .split('; ')
-      .find(row => row.startsWith('magic-hut.redirectUrl='))
-      ?.split('=')[1];
-    setRedirectUrl(redirectCookie ? decodeURIComponent(redirectCookie) : defaultUrl);
+    const urlFromCookie = getRedirectUrl();
+    setRedirectUrl(urlFromCookie);
   }, [defaultUrl]);
 
   return redirectUrl;
