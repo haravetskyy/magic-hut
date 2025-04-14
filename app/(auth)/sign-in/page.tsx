@@ -2,6 +2,7 @@
 
 import GithubButton from '@/components/github-button';
 import GoogleButton from '@/components/google-button';
+import { PasswordInput } from '@/components/password-input';
 import { Button } from '@/components/ui/button';
 import {
   Card,
@@ -99,6 +100,7 @@ const SignIn = () => {
                 </FormItem>
               )}
             />
+
             <FormField
               control={form.control}
               name="password"
@@ -106,7 +108,7 @@ const SignIn = () => {
                 <FormItem>
                   <FormLabel>Password</FormLabel>
                   <FormControl>
-                    <Input type="password" placeholder="Enter your password" {...field} />
+                    <PasswordInput {...field} placeholder="Enter your password" />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
