@@ -86,7 +86,10 @@ const SignIn = () => {
       </CardHeader>
       <CardContent>
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(handleCredentialSignIn)} className="space-y-4">
+          <form
+            onSubmit={form.handleSubmit(handleCredentialSignIn)}
+            className="space-y-4"
+            autoComplete="on">
             <FormField
               control={form.control}
               name="email"
@@ -94,7 +97,7 @@ const SignIn = () => {
                 <FormItem>
                   <FormLabel>Email</FormLabel>
                   <FormControl>
-                    <Input placeholder="example@mail.com" {...field} />
+                    <Input placeholder="example@mail.com" {...field} autoComplete="email" />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -108,7 +111,11 @@ const SignIn = () => {
                 <FormItem>
                   <FormLabel>Password</FormLabel>
                   <FormControl>
-                    <PasswordInput {...field} placeholder="Enter your password" />
+                    <PasswordInput
+                      {...field}
+                      placeholder="Enter your password"
+                      autoComplete="current-password"
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>

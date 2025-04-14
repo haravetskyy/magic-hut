@@ -56,7 +56,6 @@ const SignUp = () => {
         onSuccess: () => {
           form.reset();
           sessionStorage.setItem('pendingEmail', email);
-
           return redirect(`/verify-email`);
         },
         onError: ctx => {
@@ -78,16 +77,25 @@ const SignUp = () => {
       </CardHeader>
       <CardContent>
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+          <form
+            onSubmit={form.handleSubmit(onSubmit)}
+            className="space-y-4"
+            autoComplete="on"
+            id="signup-form">
             <section className="name flex md:flex-row flex-col justify-between gap-2">
               <FormField
                 control={form.control}
                 name="firstName"
                 render={({ field }) => (
                   <FormItem className="md:w-1/2">
-                    <FormLabel>First name</FormLabel>
+                    <FormLabel htmlFor="firstName">First name</FormLabel>
                     <FormControl>
-                      <Input placeholder="John" {...field} />
+                      <Input
+                        id="firstName"
+                        placeholder="John"
+                        autoComplete="given-name"
+                        {...field}
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -98,9 +106,14 @@ const SignUp = () => {
                 name="lastName"
                 render={({ field }) => (
                   <FormItem className="md:w-1/2">
-                    <FormLabel>Last name</FormLabel>
+                    <FormLabel htmlFor="lastName">Last name</FormLabel>
                     <FormControl>
-                      <Input placeholder="Doe" {...field} />
+                      <Input
+                        id="lastName"
+                        placeholder="Doe"
+                        autoComplete="family-name"
+                        {...field}
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -113,9 +126,15 @@ const SignUp = () => {
               name="email"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Email</FormLabel>
+                  <FormLabel htmlFor="email">Email</FormLabel>
                   <FormControl>
-                    <Input placeholder="example@mail.com" {...field} />
+                    <Input
+                      id="email"
+                      type="email"
+                      placeholder="example@mail.com"
+                      autoComplete="email"
+                      {...field}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -126,9 +145,15 @@ const SignUp = () => {
               name="password"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Password</FormLabel>
+                  <FormLabel htmlFor="password">Password</FormLabel>
                   <FormControl>
-                    <PasswordInput {...field} placeholder="Enter your password" />
+                    <PasswordInput
+                      id="password"
+                      type="password"
+                      placeholder="Enter your password"
+                      autoComplete="new-password"
+                      {...field}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
