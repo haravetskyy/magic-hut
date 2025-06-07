@@ -13,8 +13,8 @@ const DashboardPage = async () => {
   }
 
   return (
-    <div className="w-full h-full flex gap-2 justify-center items-center flex-col">
-      <h1 className="font-bold text-2xl">Welcome!</h1>
+    <div className="flex h-full w-full flex-col items-center justify-center gap-2">
+      <h1 className="text-2xl font-bold">Welcome!</h1>
       <SignOut />
     </div>
   );

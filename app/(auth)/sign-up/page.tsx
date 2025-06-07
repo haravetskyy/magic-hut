@@ -54,6 +54,7 @@ const SignUp = () => {
           });
         },
         onSuccess: () => {
+          toast({}).dismiss();
           form.reset();
           sessionStorage.setItem('pendingEmail', email);
           return redirect(`/verify-email`);
@@ -70,7 +71,7 @@ const SignUp = () => {
   };
 
   return (
-    <Card className="w-full max-w-md mx-auto border-0 shadow-none">
+    <Card className="mx-auto w-full max-w-md border-0 shadow-none">
       <CardHeader>
         <CardTitle className="text-2xl">Sign Up</CardTitle>
         <CardDescription className="text-md">Create your account to get started.</CardDescription>
@@ -82,7 +83,7 @@ const SignUp = () => {
             className="space-y-4"
             autoComplete="on"
             id="signup-form">
-            <section className="name flex md:flex-row flex-col justify-between gap-2">
+            <section className="name flex flex-col justify-between gap-2 md:flex-row">
               <FormField
                 control={form.control}
                 name="firstName"
@@ -159,7 +160,7 @@ const SignUp = () => {
                 </FormItem>
               )}
             />
-            <Button className="bg-blue-900 hover:bg-blue-900 font-bold w-full" type="submit">
+            <Button className="w-full bg-blue-900 font-bold hover:bg-blue-900" type="submit">
               Submit
             </Button>
           </form>

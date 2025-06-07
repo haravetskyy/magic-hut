@@ -59,9 +59,9 @@ const ForgotPassword = () => {
   };
 
   return (
-    <Card className="w-full max-w-md mx-auto border-0 shadow-none">
+    <Card className="mx-auto w-full max-w-md border-0 shadow-none">
       <CardHeader>
-        <CardTitle className="text-2xl text-center">Forgot password?</CardTitle>
+        <CardTitle className="text-center text-2xl">Forgot password?</CardTitle>
         <CardDescription className="text-md">
           No problem! Please, enter your email address and we will send you a link to restore your
           password
@@ -83,7 +83,7 @@ const ForgotPassword = () => {
                 </FormItem>
               )}
             />
-            <Button className="font-bold w-full" type="submit">
+            <Button className="w-full font-bold" type="submit">
               Submit
             </Button>
           </form>

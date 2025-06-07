@@ -15,8 +15,8 @@ const GithubButton = () => {
   };
 
   return (
-    <Button className="font-bold w-full flex flex-row" onClick={handleGithubSignIn}>
-      <img src="/github-mark-white.svg" className="w-5 h-5 " alt="" />
+    <Button className="flex w-full flex-row font-bold" onClick={handleGithubSignIn}>
+      <img src="/github-mark-white.svg" className="h-5 w-5" alt="" />
       <div className="flex grow justify-center">Sign in with GitHub</div>
     </Button>
   );

@@ -77,7 +77,7 @@ const SignIn = () => {
   };
 
   return (
-    <Card className="w-full max-w-md mx-auto border-0 shadow-none">
+    <Card className="mx-auto w-full max-w-md border-0 shadow-none">
       <CardHeader>
         <CardTitle className="text-2xl">Sign In</CardTitle>
         <CardDescription className="text-md">
@@ -121,23 +121,23 @@ const SignIn = () => {
                 </FormItem>
               )}
             />
-            <Button className="bg-green-900 hover:bg-green-900 font-bold w-full" type="submit">
+            <Button className="w-full bg-green-900 font-bold hover:bg-green-900" type="submit">
               Submit
             </Button>
           </form>
         </Form>
         <section className="flex flex-col items-center gap-2">
-          <div className="flex flex-row gap-2 items-center justify-center w-full mt-2">
+          <div className="mt-2 flex w-full flex-row items-center justify-center gap-2">
             <hr className="w-full border-t border-t-gray-200" />
             <p className="text-gray-500">or</p>
-            <hr className="w-full  border-t border-t-gray-200" />
+            <hr className="w-full border-t border-t-gray-200" />
           </div>
 
           <GithubButton />
           <GoogleButton />
         </section>
       </CardContent>
-      <CardFooter className="flex justify-center flex-col">
+      <CardFooter className="flex flex-col justify-center">
         <p className="text-sm text-muted-foreground">
           Don&apos;t have an account yet?{' '}
           <Link href="/sign-up" className="text-primary hover:underline">

@@ -56,9 +56,9 @@ const ResetPasswordContent = () => {
 
   if (error === 'invalid_token' || !token) {
     return (
-      <Card className="w-full max-w-md mx-auto border-0 shadow-none">
+      <Card className="mx-auto w-full max-w-md border-0 shadow-none">
         <CardHeader>
-          <CardTitle className="text-3xl font-bold text-center text-gray-800">
+          <CardTitle className="text-center text-3xl font-bold text-gray-800">
             Invalid Reset Link
           </CardTitle>
         </CardHeader>
@@ -72,7 +72,7 @@ const ResetPasswordContent = () => {
   }
 
   return (
-    <Card className="w-full max-w-md mx-auto border-0 shadow-none">
+    <Card className="mx-auto w-full max-w-md border-0 shadow-none">
       <CardHeader>
         <CardTitle className="text-2xl">Reset Password</CardTitle>
         <CardDescription className="text-md">
@@ -95,7 +95,7 @@ const ResetPasswordContent = () => {
                 </FormItem>
               )}
             />
-            <Button className="font-bold w-full" type="submit">
+            <Button className="w-full font-bold" type="submit">
               Submit
             </Button>
           </form>

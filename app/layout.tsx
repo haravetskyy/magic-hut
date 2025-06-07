@@ -15,7 +15,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning={true}>
       <body className="antialiased">
-        <main className="w-svw h-svh">{children}</main>
+        <main className="h-svh w-svw">{children}</main>
         <Toaster />
       </body>
     </html>

@@ -32,9 +32,9 @@ const EmailVerified = () => {
 
   if (error) {
     return (
-      <Card className="w-full max-w-md mx-auto border-0 shadow-none">
+      <Card className="mx-auto w-full max-w-md border-0 shadow-none">
         <CardHeader>
-          <CardTitle className="text-3xl font-bold text-center text-gray-800">
+          <CardTitle className="text-center text-3xl font-bold text-gray-800">
             Invalid Email Verification Link
           </CardTitle>
         </CardHeader>
@@ -48,16 +48,16 @@ const EmailVerified = () => {
   }
 
   return (
-    <Card className="w-full max-w-md mx-auto border-0 shadow-none">
+    <Card className="mx-auto w-full max-w-md border-0 shadow-none">
       <CardHeader>
-        <CardTitle className="text-2xl text-center">Email Verified!</CardTitle>
+        <CardTitle className="text-center text-2xl">Email Verified!</CardTitle>
         <CardDescription className="text-md text-center">
           Your email has been successfully verified. Click the button below to finish account
           creation.
         </CardDescription>
       </CardHeader>
-      <CardContent className="flex justify-center items-center">
-        <Button className="py-6 rounded-xl  font-bold w-1/2">
+      <CardContent className="flex items-center justify-center">
+        <Button className="w-1/2 rounded-xl py-6 font-bold">
           <Link href={redirectUrl}>Go home</Link>
         </Button>
       </CardContent>

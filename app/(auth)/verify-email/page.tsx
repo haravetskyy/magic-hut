@@ -64,16 +64,16 @@ const VerifyEmail = () => {
   };
 
   return (
-    <Card className="w-full max-w-md mx-auto border-0 shadow-none">
+    <Card className="mx-auto w-full max-w-md border-0 shadow-none">
       <CardHeader>
-        <CardTitle className="text-2xl text-center">Please, verify your email</CardTitle>
+        <CardTitle className="text-center text-2xl">Please, verify your email</CardTitle>
         <CardDescription className="text-md text-center">
           We just sent an email to <strong className="text-bold">{email}</strong>. Click the link in
           the email to verify your account.
         </CardDescription>
       </CardHeader>
-      <CardContent className="flex justify-center items-center">
-        <Button onClick={handleResendEmail} className="py-6 rounded-xl text-md font-bold w-1/2">
+      <CardContent className="flex items-center justify-center">
+        <Button onClick={handleResendEmail} className="text-md w-1/2 rounded-xl py-6 font-bold">
           Resend email
         </Button>
       </CardContent>
